@@ -1,5 +1,5 @@
 <template>
-    <Form 
+    <Form
         @submit="submitContact"
         :validation-schema="contactFormSchema"
     >
@@ -22,7 +22,7 @@
                 v-model="contactLocal.email"
             />
             <ErrorMessage name="email" class="error-feedback"/>
-        </div>
+        </div>        
         <div class="form-group">
             <label for="address">Địa chỉ</label>
             <Field
@@ -63,7 +63,7 @@
                 class="ml-2 btn btn-danger"
                 @click="deleteContact"
             >Xóa</button>
-        </div>      
+        </div>
     </Form>
 </template>
 <script>
@@ -84,18 +84,18 @@ export default {
         const contactFormSchema = yup.object().shape({
             name: yup
                 .string()
-                .required("Tên phải có giái trị.")
-                .min(2, "Tên phải có ít nhât 2 kí tự.")
+                .required("Tên phải có giá trị.")
+                .min(2, "Tên phải ít nhất 2 ký tự.")
                 .max(50, "Tên có nhiều nhất 50 ký tự."),
             email: yup
                 .string()
                 .email("E-mail không đúng.")
-                .max(50, "E-mail tối đa 50 kí tự"),
+                .max(50, "E-mail tối đa 50 kí tự."),
             address: yup.string().max(100, "Địa chỉ tối đa 100 ký tự."),
             phone: yup
                 .string()
                 .matches(
-                    /((09|03|07|08|05)+([0-9]{8})\b)/g, 
+                    /((09|03|07|08|05)+([0-9]{8})\b)/g,
                     "Số điện thoại không hợp lệ."
                     ),
         });
